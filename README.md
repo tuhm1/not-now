@@ -151,9 +151,8 @@ One characteristic of a promise is that when the fulfilled value is also a promi
 
 ```javascript
 const a = new Promise((fulfill) => fulfill(2));
-const b = new Promise((fulfill) => fulfill(a)).then((value) =>
-  console.log(value)
-);
+const b = new Promise((fulfill) => fulfill(a));
+b.then((value) => console.log(value));
 ```
 
 The output will be:
@@ -170,9 +169,8 @@ This behavior remains the same even if you nest more promises:
 const a = new Promise((fulfill) => fulfill(2));
 const b = new Promise((fulfill) => fulfill(a));
 const c = new Promise((fulfill) => fulfill(b));
-const d = new Promise((fulfill) => fulfill(c)).then((value) =>
-  console.log(value)
-);
+const d = new Promise((fulfill) => fulfill(c));
+d.then((value) => console.log(value));
 ```
 
 Output:
@@ -206,9 +204,8 @@ Let's test this:
 const a = new NotNow((fulfill) => fulfill(2));
 const b = new NotNow((fulfill) => fulfill(a));
 const c = new NotNow((fulfill) => fulfill(b));
-const d = new NotNow((fulfill) => fulfill(c)).then((value) =>
-  console.log(value)
-);
+const d = new NotNow((fulfill) => fulfill(c));
+d.then((value) => console.log(value));
 ```
 
 Output:
